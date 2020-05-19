@@ -10,13 +10,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Users {
 private Integer UserId;
 private String EmailId,Name,Password,MobileNo;
+@JsonIgnore
+private List<OtpDetails> otpDetails = new ArrayList<>();
 private Roles role;
 @JsonIgnore
 private List<OrderDetails> details = new ArrayList<>();
-@JsonIgnore
-private List<OtpDetails> details1 = new ArrayList<>();
 
-	
+
 public Users()
 {
 	System.out.println("Inside Users constructor !!");
@@ -103,6 +103,17 @@ public void setRole(Roles role) {
 	this.role = role;
 }
 
+@OneToMany(fetch = FetchType.EAGER,mappedBy = "usr",cascade = CascadeType.ALL,orphanRemoval = true)
+public List<OtpDetails> getOtpdetails() {
+	return otpDetails;
+}
+
+public void setOtpdetails(List<OtpDetails> otpdetails) {
+	this.otpDetails = otpdetails;
+}
+
+
+
 @OneToMany(fetch = FetchType.EAGER,mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
 public List<OrderDetails> getDetails() {
 	return details;
@@ -110,15 +121,6 @@ public List<OrderDetails> getDetails() {
 
 public void setDetails(List<OrderDetails> details) {
 	this.details = details;
-}
-
-@OneToMany(fetch = FetchType.EAGER,mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
-public List<OtpDetails> getDetails1() {
-	return details1;
-}
-
-public void setDetails1(List<OtpDetails> details1) {
-	this.details1 = details1;
 }
 
 @Override

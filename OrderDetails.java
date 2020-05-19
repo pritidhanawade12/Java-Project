@@ -58,7 +58,7 @@ public void setOrderDate(Date orderDate) {
 	this.orderDate = orderDate;
 }
 
-@JsonIgnore
+
 @ManyToOne
 @JoinColumn(name = "UserId")
 public Users getUser() {
@@ -68,6 +68,7 @@ public Users getUser() {
 public void setUser(Users user) {
 	this.user = user;
 }
+
 
 @Override
 public String toString() {

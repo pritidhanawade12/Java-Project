@@ -17,7 +17,7 @@ public class OtpDetails {
 private Integer otpId;
 private String otp;
 private Date generatedOn;
-private Users user;
+private Users usr;
 
 private OtpDetails()
 {
@@ -57,15 +57,16 @@ public void setGeneratedOn(Date generatedOn) {
 	this.generatedOn = generatedOn;
 }
 
-@JsonIgnore
+
+
 @ManyToOne
-@JoinColumn(name = "UserId")
-public Users getUser() {
-	return user;
+@JoinColumn(name = "UsrId")
+public Users getUsr() {
+	return usr;
 }
 
-public void setUser(Users user) {
-	this.user = user;
+public void setUsr(Users usr) {
+	this.usr = usr;
 }
 
 @Override
